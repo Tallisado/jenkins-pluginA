@@ -14,9 +14,9 @@
       </properties>
 
     <scm>
-      <connection>scm:git:https://github.com/Tallisado/jenkins-plugin1.git</connection>
-      <developerConnection>scm:git:https://github.com/Tallisado/jenkins-plugin1.git</developerConnection>
-      <url>https://github.com/Tallisado/jenkins-plugin1</url>
+      <connection>scm:git:git@github.com:tallisado/plugin1.git</connection>
+      <developerConnection>scm:git:git@github.com:tallisado/plugin1.git</developerConnection>
+      <url>https://github.com/tallisado/plugin1</url>
       <tag>multi-2.17</tag>
   </scm>
 
