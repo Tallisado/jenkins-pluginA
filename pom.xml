@@ -9,7 +9,6 @@
 
 
       <properties>
-        <project.scm.id>git</project.scm.id>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       </properties>
 
