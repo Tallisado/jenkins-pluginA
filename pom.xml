@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.jfrog.test</groupId>
-    <artifactId>multi</artifactId>
-    <version>2.20-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <name>Simple Multi Modules Build</name>
+    <groupId>org.tallisado</groupId>
+    <artifactId>plugin-a</artifactId>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <name>Plugin A</name>
 
 
     <properties>
@@ -13,13 +13,11 @@
     </properties>
 
     <scm>
-      <connection>scm:git:git@github.com:tallisado/plugin1.git</connection>
-      <developerConnection>scm:git:git@github.com:tallisado/plugin1.git</developerConnection>
+      <connection>scm:git:git@github.com:tallisado/pluginA.git</connection>
+      <developerConnection>scm:git:git@github.com:tallisado/pluginA.git</developerConnection>
       <url>https://github.com/tallisado/plugin1</url>
-      <tag>multi-2.18</tag>
-  </scm>
-
-
+      <tag>pluginA-1.0</tag>
+    </scm>
 
     <dependencies>
         <dependency>
@@ -51,7 +49,7 @@
             </plugins>
         </pluginManagement>
         <plugins>
-            <!-- <plugin>
+            <plugin>
                 <groupId>org.jfrog.buildinfo</groupId>
                 <artifactId>artifactory-maven-plugin</artifactId>
                 <version>2.4.1</version>
@@ -72,9 +70,9 @@
                                 <propertiesFile>publish.properties</propertiesFile>
                             </artifactory>
                             <publisher>
-                                <contextUrl>http://localhost:8081/artifactory</contextUrl>
-                                <username>superdave</username>
-                                <password>Password1</password>
+                                <contextUrl>http://159.203.14.218:8081/artifactory</contextUrl>
+                                <username>{{ARTIFACTORY_USERNAME}}</username>
+                                <password>{{ARTIFACTORY_PASSWORD}}</password>
                                 <excludePatterns>*-tests.jar</excludePatterns>
                                 <repoKey>libs-release-local</repoKey>
                                 <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
@@ -94,7 +92,7 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin> -->
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -118,6 +116,36 @@
               <artifactId>maven-release-plugin</artifactId>
               <version>2.5.3</version>
             </plugin>
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <version>1.9.1</version>
+              <executions>
+                <execution>
+                  <id>parse-version</id>
+                  <goals>
+                    <goal>parse-version</goal>
+                  </goals>
+                </execution>
+              </executions>
+            </plugin>
+            <!-- <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>build-helper-maven-plugin</artifactId>
+              <version>1.7</version>
+              <executions>
+                <execution>
+                  <phase>validate</phase>
+                  <id>parse-version</id>
+                  <goals>
+                    <goal>parse-version</goal>
+                  </goals>
+                  <configuration>
+                      <propertyPrefix>parsedVersion</propertyPrefix>
+                  </configuration>
+                </execution>
+              </executions>
+            </plugin> -->
         </plugins>
     </build>
     <repositories>
