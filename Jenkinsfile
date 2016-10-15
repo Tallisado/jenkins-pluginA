@@ -1,6 +1,6 @@
 #!groovy
 
-node {
+dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Checkout"){
       checkout scm
       sh "git clean -f && git reset --hard origin/master"
@@ -8,7 +8,7 @@ node {
       def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
   }
   stage("Build"){
-    sh "${mvnHome}/bin/mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+    sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
     sh "mvn clean deploy"
     // step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
