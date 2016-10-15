@@ -18,6 +18,9 @@ node {
         step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
         step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
    }
+
+
+   
 }
 
 // dockerNode(image: "maven:3.3.3-jdk-8") {
