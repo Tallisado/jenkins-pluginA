@@ -5,8 +5,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
       checkout scm
   }
   stage("Build"){
-    git config --global user.email "tvanek@klipfolio.com"
-    git config --global user.name "Tallis Vanek"
+    sh "git config --global user.email 'tvanek@klipfolio.com'"
+    sh "git config --global user.name 'Tallis Vanek'"
     sh "git clean -f && git reset --hard origin/master"
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
