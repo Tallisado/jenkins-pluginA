@@ -1,27 +1,30 @@
 #!groovy
 
 node {
-   stage("Checkout"){
-        // Checkout code from repository
-        echo "setting properties"
-        //properties([$class: PipelineTriggersJobProperty([[$class: 'GitHubPushTrigger'], pollSCM('H/15 * * * *')])])
-        checkout scm
-    }
-   stage("Build"){
+  stage("Checkout"){
+      checkout scm
+      sh "git clean -f && git reset --hard origin/master"
+      def pom = readMavenPom file: 'pom.xml'
+      def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+  }
+  stage("Build"){
+    sh "${mvnHome}/bin/mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+    sh "mvn clean deploy"
+    // step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
+    // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+  }
+  stage("Publish"){
+    sh "git push ${pom.artifactId}-${version}"
+  }
 
-        def mvnHome = tool 'M3'
-        //echo "${mvnHome}/bin:${env.PATH}"
-        env.PATH = "${mvnHome}/bin:${env.PATH}" //Do I need this?
-        // Run the maven build
-        "run maven"
-        sh "mvn clean install"
-        step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
-        step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
-   }
-
-
-   
+  //  stage ('Triggering application level upstreams') {
+  //     build job: 'jenkins-appA', parameters: [[$class: 'StringParameterValue', name: 'systemname', value: systemname]]
+  //  }
 }
+
+
+
+
 
 // dockerNode(image: "maven:3.3.3-jdk-8") {
 //   stage("Checkout SCM"){
