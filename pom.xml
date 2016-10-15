@@ -11,36 +11,6 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
-
-  <profile>
-     <id>upstream</id>
-     <repositories>
-        <repository>
-           <id>upstream</id>
-           <url>${env.Jenkins.Repository}</url>
-           <releases>
-               <enabled>true</enabled>
-           </releases>
-           <snapshots>
-              <enabled>true</enabled>
-           </snapshots>
-        </repository>
-      </repositories>
-   <pluginRepositories>
-      <pluginRepository>
-            <id>upstream</id>
-            <url>${env.Jenkins.Repository}</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-           </snapshots>
-      </pluginRepository>
-    </pluginRepositories>
-  </profile>
-
   <build>
       <pluginManagement>
           <plugins>

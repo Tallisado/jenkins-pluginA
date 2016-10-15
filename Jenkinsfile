@@ -5,6 +5,35 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
       checkout scm
   }
   stage("Build"){
+
+    def a = """<profile>
+              |   <id>upstream</id>
+              |   <repositories>
+              |      <repository>
+              |         <id>upstream</id>
+              |         <url>${env.Jenkins.Repository}</url>
+              |         <releases>
+              |             <enabled>true</enabled>
+              |         </releases>
+              |         <snapshots>
+              |            <enabled>true</enabled>
+              |         </snapshots>
+              |      </repository>
+              |    </repositories>
+              | <pluginRepositories>
+              |    <pluginRepository>
+              |          <id>upstream</id>
+              |          <url>${env.Jenkins.Repository}</url>
+              |          <releases>
+              |            <enabled>true</enabled>
+              |          </releases>
+              |          <snapshots>
+              |            <enabled>true</enabled>
+              |         </snapshots>
+              |    </pluginRepository>
+              |  </pluginRepositories>
+              |</profile>""".stripMargin()
+
     sh "git config --global user.email 'tvanek@klipfolio.com'"
     sh "git config --global user.name 'Tallis Vanek'"
     sh "git clean -f && git reset --hard origin/master"
