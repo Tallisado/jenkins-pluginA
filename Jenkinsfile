@@ -37,6 +37,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   }
   stage("Publish"){
     def pom = readMavenPom file: 'pom.xml'
+    def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+
     sh "git push ${pom.artifactId}-${version}"
   }
 
