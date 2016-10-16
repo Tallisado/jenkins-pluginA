@@ -61,18 +61,19 @@ dzb6VqskVCEmX9+qkiYGeaJAHCMsOSPobpE0DI9aV+RxTznyRpBfVOldWL56aK0L
     echo "Dropping SSH RSA: ${key}"
     sh "echo \"${key}\" > ~/.ssh/id_rsa_github"
     sh 'cat ~/.ssh/id_rsa_github'
-    sh """
+    git_transaction = """
 eval `ssh-agent` &&
 ssh-add ~/.ssh/id_rsa_github &&
 git tag 'l33t-build &&
 git push --tags
 """
-    sh 'eval `ssh-agent`'
-    sh 'ssh-add ~/.ssh/id_rsa_github'
-    sh 'ssh-add -l'
-    sh "git tag 'l33t-build'"
-    // // sh 'rm -rf ~/.ssh/known_hosts'
-    sh "git push --tags"
+    sh git_transaction
+    // sh 'eval `ssh-agent`'
+    // sh 'ssh-add ~/.ssh/id_rsa_github'
+    // sh 'ssh-add -l'
+    // sh "git tag 'l33t-build'"
+    // // // sh 'rm -rf ~/.ssh/known_hosts'
+    // sh "git push --tags"
 
 
 
