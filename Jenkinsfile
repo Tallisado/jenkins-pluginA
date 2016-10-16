@@ -27,6 +27,9 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
 
     echo "Git REVISION: ${GIT_COMMIT_REVISION}"
 
+    sh 'git tag "l33t build'
+    sh 'git push --tags'
+
     // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
 
 
@@ -77,14 +80,14 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
   }
   stage("Publish"){
-    def pom = readMavenPom file: 'pom.xml'
-    def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-
-    sh 'whoami'
-    sh 'cat .git/config'
-    sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
-    // sh "git push master ${pom.artifactId}-${version}"
-    sh 'git push --tags'
+    // def pom = readMavenPom file: 'pom.xml'
+    // def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+    //
+    // sh 'whoami'
+    // sh 'cat .git/config'
+    // sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
+    // // sh "git push master ${pom.artifactId}-${version}"
+    // sh 'git push --tags'
 
     // EG: java-archive-2.20.86
 
