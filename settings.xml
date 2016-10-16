@@ -2,33 +2,14 @@
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
-  <profiles>
-    <profile>
-     <id>jenkins</id>
-     <repositories>
-        <repository>
+       <distributionManagement>
+         <repository>
+           <uniqueVersion>false</uniqueVersion>
            <id>jenkins</id>
-           <url>http://159.203.16.201:8080/plugin/repository/</url>
-           <releases>
-               <enabled>true</enabled>
-           </releases>
-           <snapshots>
-              <enabled>true</enabled>
-           </snapshots>
-        </repository>
-      </repositories>
-   <pluginRepositories>
-      <pluginRepository>
-            <id>jenkins</id>
-            <url>http://159.203.16.201:8080/plugin/repository/</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-           </snapshots>
-      </pluginRepository>
-    </pluginRepositories>
-    </profile>
-  </profiles>
+           <name>Corporate Repository</name>
+           <url>${env.Jenkins.Repository}</url>
+           <layout>default</layout>
+         </repository>
+     </distributionManagement>
+
 </settings>
