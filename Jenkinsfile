@@ -15,7 +15,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
 
     git branch: 'master', credentialsId: '4e882e06-498a-46c3-a2f4-75eb42fdf56b', url: 'git@github.com:tallisado/jenkins-pluginA.git'
     sh "git tag 'l33t-build'"
-    sh 'git push --tags'
+    sh 'rm -rf ~/.ssh/known_hosts'
 
 
 
