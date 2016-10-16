@@ -40,10 +40,9 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
 
     sh 'whoami'
-    sh 'ls -al ~/.ssh/ || true'
     sh 'cat .git/config'
     sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
-    sh 'git push ${pom.artifactId}-${version} --tags'
+    sh 'git push master ${pom.artifactId}-${version}'
 
 
     // sh "git name-rev --tags --name-only $(git rev-parse HEAD)"
