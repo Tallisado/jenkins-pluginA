@@ -10,11 +10,12 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh "git clean -f && git reset --hard origin/master"
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-    sh 'ls -al /usr/share/maven/conf/settings.xml || true'
-    sh 'cp settings.xml -al /usr/share/maven/conf/settings.xml || true'
-    sh 'cat /usr/share/maven/conf/settings.xml'
-
-    sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+    // sh 'ls -al /usr/share/maven/conf/settings.xml || true'
+    // sh 'cp settings.xml -al /usr/share/maven/conf/settings.xml || true'
+    // sh 'cat /usr/share/maven/conf/settings.xml'
+// -DaltDeploymentRepository=jenkins::default::url
+// -DaltDeploymentRepository=id::layout::http://159.203.16.201:8080/plugin/repository/
+    sh "mvn --settings ./settings.xml --global-settings ./settings.xml -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
 
 
     // sh "mvn -Pupstream clean deploy"
