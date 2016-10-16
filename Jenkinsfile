@@ -11,8 +11,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
     sh 'whoami'
-    sh 'cp settings.xml  /home/jenkins/.m2/settings.xml'
-    withMaven(mavenLocalRepo: '.repository') {
+    sh 'cp settings.xml  /home/jenkins/jenkins_settings.xml'
+    withMaven(mavenLocalRepo: '.repository',  mavenSettingsConfig:"jenkins_settings", mavenSettingsFilePath"/home/jenkins/") {
       // Run the maven build
       sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
 
