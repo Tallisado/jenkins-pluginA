@@ -16,7 +16,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // sh 'cat /usr/share/maven/conf/settings.xml'
 // -DaltDeploymentRepository=jenkins::default::url
 // -DaltDeploymentRepository=id::layout::http://159.203.16.201:8080/plugin/repository/
-    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -Pjenkins -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
 
 
     // sh "mvn -Pupstream clean deploy"

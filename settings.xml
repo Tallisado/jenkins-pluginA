@@ -4,10 +4,10 @@
                          https://maven.apache.org/xsd/settings-1.0.0.xsd">
   <profiles>
     <profile>
-     <id>upstream</id>
+     <id>jenkins</id>
      <repositories>
         <repository>
-           <id>upstream</id>
+           <id>jenkins</id>
            <url>http://159.203.16.201:8080/plugin/repository/</url>
            <releases>
                <enabled>true</enabled>
@@ -19,7 +19,7 @@
       </repositories>
    <pluginRepositories>
       <pluginRepository>
-            <id>upstream</id>
+            <id>jenkins</id>
             <url>http://159.203.16.201:8080/plugin/repository/</url>
             <releases>
               <enabled>true</enabled>
