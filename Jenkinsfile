@@ -24,9 +24,9 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
 
     git branch: 'master', credentialsId: '4e882e06-498a-46c3-a2f4-75eb42fdf56b', url: 'git@github.com:tallisado/jenkins-pluginA.git'
     sh 'cat .git/config'
-    sh 'mkdir /root/.ssh'
-    sh 'touch /root/.ssh/config'
-    sh 'touch /root/.ssh/id_rsa_github'
+    sh 'mkdir ~/.ssh'
+    sh 'touch ~/.ssh/config'
+    sh 'touch ~/.ssh/id_rsa_github'
     sh 'echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config'
 
     key = """
