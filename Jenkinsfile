@@ -15,7 +15,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
 
     // git branch: 'master', credentialsId: '20686e54-62d6-423d-aedf-505f68e72094', url: 'git@github.com:tallisado/jenkins-pluginA.git'
 
-    sshagent(['20686e54-62d6-423d-aedf-505f68e72094']) {
+    sshagent(['871cee90-9263-47d1-b326-8bf467f82250']) {
       sh 'echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK'
       sh 'ls -al $SSH_AUTH_SOCK || true'
 
