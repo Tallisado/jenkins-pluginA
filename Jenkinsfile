@@ -1,23 +1,33 @@
-#!groovy
+#!/usr/bin/env groovy
 
 dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Checkout"){
-      checkout scm
+    // sh 'whoami'
+    // sh 'ls ~/.ssh'
+    // sh 'echo $env.BRANCH_NAME'
+    // checkout scm
+    sh '
+        git rev-parse --abbrev-ref HEAD > GIT_BRANCH
+        git_branch = readFile('GIT_BRANCH').trim()
+        echo git_branch
+       '
+    // checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
+
   }
   stage("Build"){
-    sh "git config --global user.email 'tvanek@klipfolio.com'"
-    sh "git config --global user.name 'Tallis Vanek'"
-    sh "git clean -f && git reset --hard origin/master"
-    def pom = readMavenPom file: 'pom.xml'
-    def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-    def PWD = pwd();
-    // sh 'ls -al /usr/share/maven/conf/settings.xml || true'
-    // sh 'cp settings.xml -al /usr/share/maven/conf/settings.xml || true'
-    // sh 'cat /usr/share/maven/conf/settings.xml'
-// -DaltDeploymentRepository=jenkins::default::url
-// -DaltDeploymentRepository=id::layout::http://159.203.16.201:8080/plugin/repository/
-    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare -B"
-    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:perform -B"
+//     sh "git config --global user.email 'tvanek@klipfolio.com'"
+//     sh "git config --global user.name 'Tallis Vanek'"
+//     sh "git clean -f && git reset --hard origin/master"
+//     def pom = readMavenPom file: 'pom.xml'
+//     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+//     def PWD = pwd();
+//     // sh 'ls -al /usr/share/maven/conf/settings.xml || true'
+//     // sh 'cp settings.xml -al /usr/share/maven/conf/settings.xml || true'
+//     // sh 'cat /usr/share/maven/conf/settings.xml'
+// // -DaltDeploymentRepository=jenkins::default::url
+// // -DaltDeploymentRepository=id::layout::http://159.203.16.201:8080/plugin/repository/
+//     sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare -B"
+//     sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:perform -B"
 
 
     // sh "mvn -Pupstream clean deploy"
@@ -41,7 +51,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
 
     sh 'whoami'
     sh 'cat .git/config'
-    // sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
+    sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
     // sh "git push master ${pom.artifactId}-${version}"
     sh 'git push --tags'
 
