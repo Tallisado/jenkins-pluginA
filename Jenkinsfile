@@ -11,7 +11,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     //     echo $git_branch;
     //    '
     // checkout scm: [$class: 'GitSCM', bran
-    ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
+    // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
     echo "${BRANCH_NAME} ${env.BRANCH_NAME} ${CHANGE_ID}"
   }
   stage("Build"){
