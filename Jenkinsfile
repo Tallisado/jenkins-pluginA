@@ -19,9 +19,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     //    '
     // checkout scm: [$class: 'GitSCM', bran
     // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
-    echo "${env}"
     echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
-    sh "$CHANGE_ID"
     sh 'env'
     sh 'env > env.txt'
     printEach(readFile('env.txt'))
