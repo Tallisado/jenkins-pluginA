@@ -35,9 +35,10 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
   }
-  // stage("Publish"){
-  //   sh "git push ${pom.artifactId}-${version}"
-  // }
+  stage("Publish"){
+    def pom = readMavenPom file: 'pom.xml'
+    sh "git push ${pom.artifactId}-${version}"
+  }
 
   //  stage ('Triggering application level upstreams') {
   //     build job: 'jenkins-appA', parameters: [[$class: 'StringParameterValue', name: 'systemname', value: systemname]]
