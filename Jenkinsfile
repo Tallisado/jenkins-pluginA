@@ -5,13 +5,13 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // sh 'whoami'
     // sh 'ls ~/.ssh'
     // sh 'echo $env.BRANCH_NAME'
-    // checkout scm
-    sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH;
-        git_branch = readFile('GIT_BRANCH').trim();
-        echo $git_branch;
-       '
+    checkout scm
+    // sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH;
+    //     git_branch = readFile('GIT_BRANCH').trim();
+    //     echo $git_branch;
+    //    '
     // checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
-
+    echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
   }
   stage("Build"){
 //     sh "git config --global user.email 'tvanek@klipfolio.com'"
