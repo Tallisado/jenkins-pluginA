@@ -30,37 +30,43 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'echo "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
 
     key = """
-    -----BEGIN RSA PRIVATE KEY-----
-    MIIEpAIBAAKCAQEA0BWCT1Fy2sJ3BWTuuklJgbMhaExLi+jwUCfoK0lqNuO/mCAX
-    W6myNf7Tetz/piMeBJLZ5j9WIdT3pruQYDpSkcK6IV5KXuRepgV7JTBGa+9tuY94
-    y66tFGACHFx3SOUJsQMiwSAp5ZlTE6fQhiW4OVYNK8diyPsTgNpP/nxgkjWk7qao
-    1pRIrrK2i3QUxQUw4dUILfo7gHq1+0Kf9+n9BOYZlT2xUjfDCnxK+gpyq9NdXAnN
-    5xKYhXGVd7UCmnSIFQEDol4rtA1PNHgMCRV7+y5CWin1HfG/aI8HlTu4bE2O3bBH
-    lnsemA6Bq+3pt94G3vmwG583S3NdJxt5wPl4MQIDAQABAoIBAQCf8ZiLbXjSTB3+
-    iHmzuTeGOXGZYOPE9FUb18Du3OyGqoMP5MLvkz3HoUtfKlZblqyxKUvSXqbPNIrz
-    n0K3pLzpC3vUwEx8Kh/Sj237xOKsfoqh0nUwYuDpQ27769tIrbzIUje5qQZrVHJ2
-    LkzrgDzd3ZYcK5N0FwIDzkskuufkGXJ4pxWi7BvzdUSqYOnMDEbzyHRaGhxm0kim
-    UHSToBUnbNTGnXMU2yxobhDzP04zw8HQGkTGQO9d7FQG8FBRdwwdJsn1w0fPEluR
-    QxFhAKWRbtiwqTF3QYyYVKTXkAxSg3eFEigmKAG12ES+Oju4WT17bktJTzPIdhnM
-    WirpurotAoGBAPR7zxNzeqy1Sz1nM9ES5RqYC8nYeIUvp1J1XdI2dJreYRIo1GZ+
-    wVPLB8ptmOe9U1ttSDCDaJRhkBxj/hDebpwIm4Q/SoO+t03naRweo5Vs3lLJQ9qa
-    x54RhyyqsJwekiX30cnVRnhaoKyNXpm2tI0Lns/fUlAW8yah96HtRitbAoGBANni
-    w0PDBunloSROcBq7HWTHE/OcuhpxyIqn1H8bp1BlmJkrcX2sf58LhqXKyrjxU2VU
-    eEda/FmIJJBzy83aNndkiYXEXkaNUvuyl1jTbc6J28DLenQNi1O/b9MWyryB2lu3
-    xeDn4hMRvXulKfHEpva4PofVRIxNUPchpFZTZlxjAoGBANQxVRQryVB29Xuww/91
-    Z9WCG9EvicMHDjF6XljiHKiB1Dx/pYHkCAWjFPrzzp9r6hpTKjG5DB6k4wBRJSUc
-    +WGB8wCAMjtQXyZFcCwQx6gcWoX921+zsQeXbPwulaSav/wmMDX+XvB8sDGzbWT6
-    d5Bngoom6PlMQfPI5fXry1g7AoGAQkvaSDL+Vor1Vhu7xpZqojBk5LoqckNu1qms
-    YaSjazYOkYSDes7S4izaonWq600ap/lkw6luoTtojL9/Irqj2f4wThBq8yKrPkSg
-    AnoKrk6KHAaN0uQQIcJdHyiPNX55V3D6d612v4ClXArsUVEZ0HZNKH1+5wXbfeax
-    n0avHasCgYAGypFA7sgQlvJbymoIsW/ltgtBMuAl/IjwmBLt778QbMe0n+IBGddH
-    dzb6VqskVCEmX9+qkiYGeaJAHCMsOSPobpE0DI9aV+RxTznyRpBfVOldWL56aK0L
-    9gGCC7/T4V4aQYquTj93wpQqTQAXMJ+KBUULxoZGDNkwJQBMsbWTIQ==
-    -----END RSA PRIVATE KEY-----"""
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEA0BWCT1Fy2sJ3BWTuuklJgbMhaExLi+jwUCfoK0lqNuO/mCAX
+W6myNf7Tetz/piMeBJLZ5j9WIdT3pruQYDpSkcK6IV5KXuRepgV7JTBGa+9tuY94
+y66tFGACHFx3SOUJsQMiwSAp5ZlTE6fQhiW4OVYNK8diyPsTgNpP/nxgkjWk7qao
+1pRIrrK2i3QUxQUw4dUILfo7gHq1+0Kf9+n9BOYZlT2xUjfDCnxK+gpyq9NdXAnN
+5xKYhXGVd7UCmnSIFQEDol4rtA1PNHgMCRV7+y5CWin1HfG/aI8HlTu4bE2O3bBH
+lnsemA6Bq+3pt94G3vmwG583S3NdJxt5wPl4MQIDAQABAoIBAQCf8ZiLbXjSTB3+
+iHmzuTeGOXGZYOPE9FUb18Du3OyGqoMP5MLvkz3HoUtfKlZblqyxKUvSXqbPNIrz
+n0K3pLzpC3vUwEx8Kh/Sj237xOKsfoqh0nUwYuDpQ27769tIrbzIUje5qQZrVHJ2
+LkzrgDzd3ZYcK5N0FwIDzkskuufkGXJ4pxWi7BvzdUSqYOnMDEbzyHRaGhxm0kim
+UHSToBUnbNTGnXMU2yxobhDzP04zw8HQGkTGQO9d7FQG8FBRdwwdJsn1w0fPEluR
+QxFhAKWRbtiwqTF3QYyYVKTXkAxSg3eFEigmKAG12ES+Oju4WT17bktJTzPIdhnM
+WirpurotAoGBAPR7zxNzeqy1Sz1nM9ES5RqYC8nYeIUvp1J1XdI2dJreYRIo1GZ+
+wVPLB8ptmOe9U1ttSDCDaJRhkBxj/hDebpwIm4Q/SoO+t03naRweo5Vs3lLJQ9qa
+x54RhyyqsJwekiX30cnVRnhaoKyNXpm2tI0Lns/fUlAW8yah96HtRitbAoGBANni
+w0PDBunloSROcBq7HWTHE/OcuhpxyIqn1H8bp1BlmJkrcX2sf58LhqXKyrjxU2VU
+eEda/FmIJJBzy83aNndkiYXEXkaNUvuyl1jTbc6J28DLenQNi1O/b9MWyryB2lu3
+xeDn4hMRvXulKfHEpva4PofVRIxNUPchpFZTZlxjAoGBANQxVRQryVB29Xuww/91
+Z9WCG9EvicMHDjF6XljiHKiB1Dx/pYHkCAWjFPrzzp9r6hpTKjG5DB6k4wBRJSUc
++WGB8wCAMjtQXyZFcCwQx6gcWoX921+zsQeXbPwulaSav/wmMDX+XvB8sDGzbWT6
+d5Bngoom6PlMQfPI5fXry1g7AoGAQkvaSDL+Vor1Vhu7xpZqojBk5LoqckNu1qms
+YaSjazYOkYSDes7S4izaonWq600ap/lkw6luoTtojL9/Irqj2f4wThBq8yKrPkSg
+AnoKrk6KHAaN0uQQIcJdHyiPNX55V3D6d612v4ClXArsUVEZ0HZNKH1+5wXbfeax
+n0avHasCgYAGypFA7sgQlvJbymoIsW/ltgtBMuAl/IjwmBLt778QbMe0n+IBGddH
+dzb6VqskVCEmX9+qkiYGeaJAHCMsOSPobpE0DI9aV+RxTznyRpBfVOldWL56aK0L
+9gGCC7/T4V4aQYquTj93wpQqTQAXMJ+KBUULxoZGDNkwJQBMsbWTIQ==
+-----END RSA PRIVATE KEY-----"""
 
     echo "Dropping SSH RSA: ${key}"
     sh "echo \"${key}\" > ~/.ssh/id_rsa_github"
     sh 'cat ~/.ssh/id_rsa_github'
+    sh """
+eval `ssh-agent` &&
+ssh-add ~/.ssh/id_rsa_github &&
+git tag 'l33t-build &&
+git push --tags
+"""
     sh 'eval `ssh-agent`'
     sh 'ssh-add ~/.ssh/id_rsa_github'
     sh 'ssh-add -l'
