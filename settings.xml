@@ -7,7 +7,7 @@
      <repositories>
         <repository>
            <id>upstream</id>
-           <url>${env.Jenkins.Repository}</url>
+           <url>http://159.203.16.201:8080/plugin/repository/</url>
            <releases>
                <enabled>true</enabled>
            </releases>
@@ -19,7 +19,7 @@
    <pluginRepositories>
       <pluginRepository>
             <id>upstream</id>
-            <url>${env.Jenkins.Repository}</url>
+            <url>http://159.203.16.201:8080/plugin/repository/</url>
             <releases>
               <enabled>true</enabled>
             </releases>
@@ -29,3 +29,4 @@
       </pluginRepository>
     </pluginRepositories>
   </profile>
+</settings>
