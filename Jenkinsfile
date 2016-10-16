@@ -13,6 +13,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'whoami'
     def PWD = pwd();
     sh 'echo ${PWD}'
+    sh 'ls -al ${PWD}'
     // sh 'cp settings.xml  /usr/share/maven/ref/settings.xml'
     withMaven(mavenLocalRepo: '.repository',  mavenSettingsConfig: "settings.xml", mavenSettingsFilePath: "${PWD}") {
       // Run the maven build
