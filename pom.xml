@@ -7,6 +7,12 @@
   <artifactId>java-archive</artifactId>
   <version>2.20-SNAPSHOT</version>
 
+  <scm>
+    <connection>scm:git:git@github.com:tallisado/jenkins-pluginA.git</connection>
+    <developerConnection>scm:git:git@github.com:tallisado/jenkins-pluginA.git</developerConnection>
+    <url>https://github.com/tallisado/jenkins-pluginA</url>
+    <tag>multi-2.18</tag>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
