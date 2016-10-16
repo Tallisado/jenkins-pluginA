@@ -13,11 +13,12 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // sh 'ls ~/.ssh'
 
 
-    vars.GIT_COMMIT_REVISION = sh (
+    GIT_COMMIT_REVISION = sh (
         script: 'git rev-parse HEAD',
         returnStdout: true
     ).trim()
     echo "Git REVISION: ${vars.GIT_COMMIT_REVISION}"
+    ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
 
 
     // sh 'echo $env.BRANCH_NAME'
