@@ -13,7 +13,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // sh 'ls ~/.ssh'
     checkout scm
 
-    git branch: 'master', credentialsId: '20686e54-62d6-423d-aedf-505f68e72094'
+    git branch: 'master', credentialsId: '20686e54-62d6-423d-aedf-505f68e72094', url: 'ssh://git@github.com:tallisado/jenkins-pluginA.git'
 
     GIT_COMMIT_REVISION = sh (
         script: 'git rev-parse HEAD',
@@ -21,6 +21,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     ).trim()
 
     echo "Git REVISION: ${GIT_COMMIT_REVISION}"
+
     // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
 
 
