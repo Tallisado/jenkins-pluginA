@@ -13,9 +13,21 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // sh 'ls ~/.ssh'
     // checkout scm
 
+    /*
+
+    RUN mkdir -p /root/.ssh
+    ADD id_rsa /root/.ssh/id_rsa
+    RUN chmod 700 /root/.ssh/id_rsa
+    RUN echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config
+
+    */
+
     git branch: 'master', credentialsId: '4e882e06-498a-46c3-a2f4-75eb42fdf56b', url: 'git@github.com:tallisado/jenkins-pluginA.git'
+    sh 'cat .git/config'
+    sh 'echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config'
+    sh 'ssh-add -l'
     sh "git tag 'l33t-build'"
-    sh 'rm -rf ~/.ssh/known_hosts'
+    // sh 'rm -rf ~/.ssh/known_hosts'
     sh "git push --tags"
 
 
