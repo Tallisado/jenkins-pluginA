@@ -10,8 +10,9 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     //     git_branch = readFile('GIT_BRANCH').trim();
     //     echo $git_branch;
     //    '
-    // checkout scm: [$class: 'GitSCM', branches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
-    echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
+    // checkout scm: [$class: 'GitSCM', bran
+    ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
+    echo "${BRANCH_NAME} ${env.BRANCH_NAME} ${CHANGE_ID}"
   }
   stage("Build"){
 //     sh "git config --global user.email 'tvanek@klipfolio.com'"
