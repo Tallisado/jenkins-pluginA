@@ -27,7 +27,7 @@
      <repositories>
         <repository>
            <id>jenkins</id>
-           <url>http://159.203.16.201:8080/plugin/repository</url>
+           <url>http://159.203.16.201:8080/plugin/repository/everything</url>
            <releases>
                <enabled>true</enabled>
            </releases>
@@ -39,7 +39,7 @@
    <pluginRepositories>
       <pluginRepository>
             <id>jenkins</id>
-            <url>http://159.203.16.201:8080/plugin/repository</url>
+            <url>http://159.203.16.201:8080/plugin/repository/everything</url>
             <releases>
               <enabled>true</enabled>
             </releases>
