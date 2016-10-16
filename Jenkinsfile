@@ -42,7 +42,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'whoami'
     sh 'cat .git/config'
     sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
-    sh 'git push master ${pom.artifactId}-${version}'
+    sh "git push master ${pom.artifactId}-${version}"
 
 
     // sh "git name-rev --tags --name-only $(git rev-parse HEAD)"
