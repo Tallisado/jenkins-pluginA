@@ -22,7 +22,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
     sh 'env'
     sh 'env > env.txt'
-    printEach(readFile('env.txt'))
+    sh 'cat env.txt'
+    // printEach(readFile('env.txt'))
 
 
   }
