@@ -27,7 +27,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'mkdir /root/.ssh'
     sh 'touch /root/.ssh/config'
     sh 'echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config'
-    sh 'ssh-add -l'
+    // sh 'ssh-add -l'
     sh "git tag 'l33t-build'"
     // sh 'rm -rf ~/.ssh/known_hosts'
     sh "git push --tags"
