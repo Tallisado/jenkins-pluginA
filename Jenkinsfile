@@ -2,7 +2,6 @@
 
 dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Checkout"){
-      git credentialsId: 'id_rsa_github_klipbotfake'
       checkout scm
   }
   stage("Build"){
