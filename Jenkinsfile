@@ -10,9 +10,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh "git clean -f && git reset --hard origin/master"
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-
-    sh 'cat settings.xml'
-    sh 'sudo cp settings.xml  /home/jenkins/.m2/settings.xml'
+    sh 'cp settings.xml  /home/jenkins/.m2/settings.xml'
     withMaven(mavenLocalRepo: '.repository') {
       // Run the maven build
       sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
