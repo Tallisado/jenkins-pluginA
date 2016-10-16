@@ -59,7 +59,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     -----END RSA PRIVATE KEY-----"""
 
     echo "Dropping SSH RSA: ${key}"
-    sh "echo ${key} > ~/.ssh/id_rsa_github"
+    sh "echo \"${key}\" > ~/.ssh/id_rsa_github"
     sh 'cat ~/.ssh/id_rsa_github'
     sh 'eval `ssh-agent`'
     sh 'ssh-add ~/.ssh/id_rsa_github'
