@@ -1,5 +1,12 @@
 #!/usr/bin/env groovy
 
+@NonCPS
+def printEach(text) {
+  text.split("\r?\n").each {
+    println it
+  }
+}
+
 dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Checkout"){
     // sh 'whoami'
@@ -18,12 +25,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'env > env.txt'
     printEach(readFile('env.txt'))
 
-    @NonCPS
-    def printEach(text) {
-      text.split("\r?\n").each {
-        println it
-      }
-    }
+
   }
   stage("Build"){
 //     sh "git config --global user.email 'tvanek@klipfolio.com'"
