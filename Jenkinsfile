@@ -13,6 +13,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'whoami'
     sh 'ls -al ~/.m2'
     sh 'ls -al /home/jenkins/.m2'
+    sh 'ls -al $USER_HOME_DIR/.m2'
     sh 'cp settings.xml  /home/jenkins/jenkins_settings.xml'
     withMaven(mavenLocalRepo: '.repository',  mavenSettingsConfig: "jenkins_settings.xml", mavenSettingsFilePath: "/home/jenkins") {
       // Run the maven build
