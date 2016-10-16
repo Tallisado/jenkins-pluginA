@@ -38,6 +38,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Publish"){
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+    sh "git name-rev --tags --name-only $(git rev-parse HEAD)"
     sh "git status"
     sh "git branch temp-branch"
     sh "git checkout master"
@@ -45,8 +46,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh "git push origin master"
   }
 
-  stage("Downstream Applications"){
-    build job: 'jenkins-appA', parameters: [[$class: 'StringParameterValue', name: 'target', value: "GG"]]
+  // stage("Downstream Applications"){
+  //   build job: 'jenkins-appA', parameters: [[$class: 'StringParameterValue', name: 'target', value: "GG"]]
     // http://159.203.16.201:8080/job/tallisado/job/jenkins-appA/master
   }
 
