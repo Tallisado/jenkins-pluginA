@@ -13,14 +13,21 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'ls -al /usr/share/maven/conf/settings.xml || true'
     sh 'cp settings.xml -al /usr/share/maven/conf/settings.xml || true'
     sh 'cat /usr/share/maven/conf/settings.xml'
+
+    sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+
+
+    // sh "mvn -Pupstream clean deploy"
+
+
     // sh 'cp settings.xml  /usr/share/maven/ref/settings.xml'
-    withMaven(mavenLocalRepo: '.repository',  mavenSettingsConfig: "settings.xml", mavenSettingsFilePath: "/usr/share/maven/conf/") {
-      // Run the maven build
-      sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
-
-
-      // sh "mvn -Pupstream clean deploy"
-    }
+    // withMaven(mavenLocalRepo: '.repository',  mavenSettingsConfig: "settings.xml", mavenSettingsFilePath: "/usr/share/maven/conf/") {
+    //   // Run the maven build
+    //   sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+    //
+    //
+    //   // sh "mvn -Pupstream clean deploy"
+    // }
 
     // step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
