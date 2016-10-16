@@ -14,9 +14,15 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
     echo "${env}"
     echo "${BRANCH_NAME} ${env.BRANCH_NAME}"
+    sh "$CHANGE_ID"
     sh 'env > env.txt'
-    readFile('env.txt').split("\r?\n").each {
-      println it
+    printEach(readFile('env.txt'))
+
+    @NonCPS
+    def printEach(text) {
+      text.split("\r?\n").each {
+        println it
+      }
     }
   }
   stage("Build"){
