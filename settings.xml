@@ -12,13 +12,9 @@
   </servers> -->
   <servers>
     <server>
-      <id>server001</id>
-      <username>my_login</username>
-      <password>my_password</password>
-      <privateKey>${user.home}/.ssh/id_dsa</privateKey>
-      <passphrase>some_passphrase</passphrase>
-      <filePermissions>664</filePermissions>
-      <directoryPermissions>775</directoryPermissions>
+      <id>jenkins</id>
+      <username>buildmanager</username>
+      <password>buildmanager</password>
       <configuration></configuration>
     </server>
   </servers>
@@ -31,8 +27,6 @@
      <repositories>
         <repository>
            <id>jenkins</id>
-          <username>buildmanager</username>
-          <password>buildmanager</password>
            <url>http://159.203.16.201:8080/plugin/repository</url>
            <releases>
                <enabled>true</enabled>
@@ -46,8 +40,6 @@
       <pluginRepository>
             <id>jenkins</id>
             <url>http://159.203.16.201:8080/plugin/repository</url>
-            <username>buildmanager</username>
-            <password>buildmanager</password>
             <releases>
               <enabled>true</enabled>
             </releases>
