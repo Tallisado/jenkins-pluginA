@@ -19,7 +19,7 @@
       <uniqueVersion>false</uniqueVersion>
       <id>jenkins</id>
       <name>Corporate Repository</name>
-      <url>${env.Jenkins.Repository}</url>
+      <url>http://159.203.16.201:8080/plugin/repository</url>
       <layout>default</layout>
     </repository>
 </distributionManagement>
@@ -27,6 +27,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
   <build>
       <pluginManagement>
           <plugins>
@@ -43,74 +44,21 @@
           </plugins>
       </pluginManagement>
       <plugins>
-            <!-- <plugin>
-                <groupId>org.jfrog.buildinfo</groupId>
-                <artifactId>artifactory-maven-plugin</artifactId>
-                <version>2.4.1</version>
-                <inherited>false</inherited>
-                <executions>
-                    <execution>
-                        <id>build-info</id>
-                        <goals>
-                            <goal>publish</goal>
-                        </goals>
-                        <configuration>
-                            <deployProperties>
-                                <gradle>awesome</gradle>
-                            </deployProperties>
-                            <artifactory>
-                                <includeEnvVars>true</includeEnvVars>
-                                <timeoutSec>60</timeoutSec>
-                                <propertiesFile>publish.properties</propertiesFile>
-                            </artifactory>
-                            <publisher>
-                                <contextUrl>http://localhost:8081/artifactory</contextUrl>
-                                <username>superdave</username>
-                                <password>Password1</password>
-                                <excludePatterns>*-tests.jar</excludePatterns>
-                                <repoKey>libs-release-local</repoKey>
-                                <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
-                            </publisher>
-                            <buildInfo>
-                                <buildName>plugin-demo</buildName>
-                                <buildNumber>1</buildNumber>
-                                <buildUrl>http://build-url.org</buildUrl>
-                            </buildInfo>
-                            <licenses>
-                                <autoDiscover>true</autoDiscover>
-                                <includePublishedArtifacts>false</includePublishedArtifacts>
-                                <runChecks>true</runChecks>
-                                <scopes>compile,runtime</scopes>
-                                <violationRecipients>build@organisation.com</violationRecipients>
-                            </licenses>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin> -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <addMavenDescriptor>false</addMavenDescriptor>
-                    </archive>
-                </configuration>
-            </plugin>
-            <plugin>
+          <plugin>
               <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-release-plugin</artifactId>
-              <version>2.5.3</version>
-            </plugin>
+              <artifactId>maven-jar-plugin</artifactId>
+              <version>3.0.2</version>
+              <configuration>
+                  <archive>
+                      <addMavenDescriptor>false</addMavenDescriptor>
+                  </archive>
+              </configuration>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-release-plugin</artifactId>
+            <version>2.5.3</version>
+          </plugin>
         </plugins>
     </build>
-
 </project>
