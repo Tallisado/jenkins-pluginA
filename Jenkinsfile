@@ -12,6 +12,12 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
     sh "mvn -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
     sh "mvn -Pupstream clean deploy"
+
+    withMaven(mavenLocalRepo: '.repository', mavenSettingsConfig: 'settings.xml', mavenSettingsFilePath: ".") {
+            // Run the maven build
+            sh "mvn -Pupstream clean deploy"
+        }
+
     // step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
   }
