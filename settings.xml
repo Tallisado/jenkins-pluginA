@@ -3,16 +3,28 @@
      xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                      https://maven.apache.org/xsd/settings-1.0.0.xsd">
 
-  <servers>
+  <!-- <servers>
     <server>
       <id>jenkins</id>
       <username>buildmanager</username>
       <password>buildmanager</password>
     </server>
+  </servers> -->
+  <servers>
+    <server>
+      <id>server001</id>
+      <username>my_login</username>
+      <password>my_password</password>
+      <privateKey>${user.home}/.ssh/id_dsa</privateKey>
+      <passphrase>some_passphrase</passphrase>
+      <filePermissions>664</filePermissions>
+      <directoryPermissions>775</directoryPermissions>
+      <configuration></configuration>
+    </server>
   </servers>
 
 
-  
+
   <profiles>
     <profile>
      <id>jenkins</id>
