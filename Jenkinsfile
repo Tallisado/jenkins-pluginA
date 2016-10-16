@@ -2,8 +2,7 @@
 
 dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Checkout"){
-    git credentialsId: 'jenkins_ssh_key',
-    branch: develop
+      git credentialsId: 'id_rsa_github_klipbotfake'
       checkout scm
   }
   stage("Build"){
@@ -40,6 +39,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Publish"){
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
+    sh "git status"
     sh "git branch temp-branch"
     sh "git checkout master"
     sh "git merge temp-branch"
