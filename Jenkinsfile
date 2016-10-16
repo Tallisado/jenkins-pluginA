@@ -16,7 +16,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // sh 'cat /usr/share/maven/conf/settings.xml'
 // -DaltDeploymentRepository=jenkins::default::url
 // -DaltDeploymentRepository=id::layout::http://159.203.16.201:8080/plugin/repository/
-    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -Pjenkins -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare release:perform -B"
+    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -Pjenkins -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:prepare -B"
+    sh "mvn --settings ${PWD}/settings.xml --global-settings ${PWD}/settings.xml -Pjenkins -DreleaseVersion=${version} -DdevelopmentVersion=${pom.version} -DpushChanges=false -DlocalCheckout=true -DpreparationGoals=initialize release:perform -B"
 
 
     // sh "mvn -Pupstream clean deploy"
@@ -34,9 +35,9 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // step([$class: 'ArtifactArchiver', allowEmptyArchive: true, artifacts: '**/target/*.jar', fingerprint: true])
     // step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
   }
-  stage("Publish"){
-    sh "git push ${pom.artifactId}-${version}"
-  }
+  // stage("Publish"){
+  //   sh "git push ${pom.artifactId}-${version}"
+  // }
 
   //  stage ('Triggering application level upstreams') {
   //     build job: 'jenkins-appA', parameters: [[$class: 'StringParameterValue', name: 'systemname', value: systemname]]
