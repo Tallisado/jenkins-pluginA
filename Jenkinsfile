@@ -42,7 +42,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   }
 
   stage("Downstream Applications"){
-    build job: 'jenkins-pluginA', parameters: [[$class: 'StringParameterValue', name: 'target', value: target]]
+    build job: 'jenkins-appA', parameters: [[$class: 'StringParameterValue', name: 'target', value: "GG"]]
     http://159.203.16.201:8080/job/tallisado/job/jenkins-appA/master
   }
 
