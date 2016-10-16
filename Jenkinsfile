@@ -64,7 +64,7 @@ dzb6VqskVCEmX9+qkiYGeaJAHCMsOSPobpE0DI9aV+RxTznyRpBfVOldWL56aK0L
     git_transaction = """
 eval `ssh-agent` &&
 ssh-add ~/.ssh/id_rsa_github &&
-git tag 'l33t-build &&
+git tag 'l33t-build' &&
 git push --tags
 """
     sh git_transaction
