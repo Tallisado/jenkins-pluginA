@@ -14,7 +14,7 @@
     <tag>multi-2.18</tag>
   </scm>
 
-  <!-- <distributionManagement>
+  <distributionManagement>
     <repository>
       <uniqueVersion>false</uniqueVersion>
       <id>artifactory</id>
@@ -22,7 +22,7 @@
       <url>http://159.203.63.104:8080/artifactory/libs-release</url>
       <layout>default</layout>
     </repository>
-</distributionManagement> -->
+</distributionManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
