@@ -27,7 +27,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'mkdir ~/.ssh'
     sh 'touch ~/.ssh/config'
     sh 'touch ~/.ssh/id_rsa_github'
-    sh 'echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config'
+    sh 'echo "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
 
     key = """
     -----BEGIN RSA PRIVATE KEY-----
