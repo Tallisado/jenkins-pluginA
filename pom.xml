@@ -7,12 +7,12 @@
   <artifactId>java-archive</artifactId>
   <version>2.20-SNAPSHOT</version>
 
-  <!-- <scm>
+  <scm>
     <connection>scm:git:git@github.com:tallisado/jenkins-pluginA.git</connection>
     <developerConnection>scm:git:git@github.com:tallisado/jenkins-pluginA.git</developerConnection>
     <url>https://github.com/tallisado/jenkins-pluginA</url>
     <tag>multi-2.18</tag>
-  </scm> -->
+  </scm>
 
   <distributionManagement>
     <repository>
@@ -59,6 +59,33 @@
             <artifactId>maven-release-plugin</artifactId>
             <version>2.5.3</version>
           </plugin>
+              <!-- <plugin>
+               <groupId>org.jfrog.buildinfo</groupId>
+               <artifactId>artifactory-maven-plugin</artifactId>
+               <version>2.6.1</version>
+               <inherited>false</inherited>
+               <executions>
+                   <execution>
+                       <id>build-info</id>
+                       <goals>
+                           <goal>publish</goal>
+                       </goals>
+                       <configuration>
+                           <deployProperties>
+                               <gradle>awesome</gradle>
+                               <review.team>qa</review.team>
+                           </deployProperties>
+                           <publisher>
+                               <contextUrl>https://oss.jfrog.org</contextUrl>
+                               <username>admin</username>
+                               <password>password</password>
+                               <repoKey>libs-release-local</repoKey>
+                               <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                           </publisher>
+                       </configuration>
+                   </execution>
+               </executions>
+           </plugin> -->
         </plugins>
     </build>
 </project>
