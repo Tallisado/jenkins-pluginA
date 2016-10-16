@@ -1,53 +1,54 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-     xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                     https://maven.apache.org/xsd/settings-1.0.0.xsd">
-
-  <!-- <servers>
-    <server>
-      <id>jenkins</id>
-      <username>buildmanager</username>
-      <password>buildmanager</password>
-    </server>
-  </servers> -->
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <servers>
     <server>
-      <id>jenkins</id>
-      <username>buildmanager</username>
-      <password>buildmanager</password>
-      <configuration></configuration>
+      <username>admin</username>
+      <id>central</id>
+    </server>
+    <server>
+      <username>admin</username>
+      <id>snapshots</id>
     </server>
   </servers>
-
-
-
   <profiles>
     <profile>
-     <id>jenkins</id>
-     <repositories>
+      <repositories>
         <repository>
-           <id>jenkins</id>
-           <url>http://159.203.16.201:8080/plugin/repository/everything</url>
-           <releases>
-               <enabled>true</enabled>
-           </releases>
-           <snapshots>
-              <enabled>true</enabled>
-           </snapshots>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>libs-release</name>
+          <url>http://159.203.63.104:8080/artifactory/libs-release</url>
+        </repository>
+        <repository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>libs-snapshot</name>
+          <url>http://159.203.63.104:8080/artifactory/libs-snapshot</url>
         </repository>
       </repositories>
-   <pluginRepositories>
-      <pluginRepository>
-            <id>jenkins</id>
-            <url>http://159.203.16.201:8080/plugin/repository/everything</url>
-            <releases>
-              <enabled>true</enabled>
-            </releases>
-            <snapshots>
-              <enabled>true</enabled>
-           </snapshots>
-      </pluginRepository>
-    </pluginRepositories>
+      <pluginRepositories>
+        <pluginRepository>
+          <snapshots>
+            <enabled>false</enabled>
+          </snapshots>
+          <id>central</id>
+          <name>plugins-release</name>
+          <url>http://159.203.63.104:8080/artifactory/plugins-release</url>
+        </pluginRepository>
+        <pluginRepository>
+          <snapshots />
+          <id>snapshots</id>
+          <name>plugins-snapshot</name>
+          <url>http://159.203.63.104:8080/artifactory/plugins-snapshot</url>
+        </pluginRepository>
+      </pluginRepositories>
+      <id>artifactory</id>
     </profile>
   </profiles>
+  <activeProfiles>
+    <activeProfile>artifactory</activeProfile>
+  </activeProfiles>
 </settings>
