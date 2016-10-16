@@ -10,8 +10,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh "git clean -f && git reset --hard origin/master"
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-    sh 'ls -al /usr/share/maven/conf/settings.xml && true'
-    sh 'ls -al /home/jenkins/.m2/settings.xml && true'
+    sh 'ls -al /usr/share/maven/conf/settings.xml || true'
+    sh 'ls -al /home/jenkins/.m2/settings.xml || true'
     sh 'mvn -X'
     sh 'whoami'
     def PWD = pwd();
