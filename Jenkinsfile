@@ -38,12 +38,20 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Publish"){
     def pom = readMavenPom file: 'pom.xml'
     def version = pom.version.replace("-SNAPSHOT", ".${currentBuild.number}")
-    sh "git name-rev --tags --name-only $(git rev-parse HEAD)"
-    sh "git status"
-    sh "git branch temp-branch"
-    sh "git checkout master"
-    sh "git merge temp-branch"
-    sh "git push origin master"
+
+    sh 'whoami'
+    sh 'ls -al ~/.ssh/ || true'
+    // sshagent (credentials: ['git']) {
+    //   sh 'ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.1.106 uname -a'
+    // }
+
+
+    // sh "git name-rev --tags --name-only $(git rev-parse HEAD)"
+    // sh "git status"
+    // sh "git branch temp-branch"
+    // sh "git checkout master"
+    // sh "git merge temp-branch"
+    // sh "git push origin master"
   }
 
   // stage("Downstream Applications"){
