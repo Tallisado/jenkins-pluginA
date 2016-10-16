@@ -42,9 +42,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     sh 'whoami'
     sh 'ls -al ~/.ssh/ || true'
     sh 'cat .git/config'
-    sshagent (credentials: ['git']) {
-      sh 'ssh -o StrictHostKeyChecking=no -l cloudbees 192.168.1.106 uname -a'
-    }
+    sh 'git remote set-url origin git@github.com:tallisado/jenkins-pluginA.git'
+    sh 'git push ${pom.artifactId}-${version}'
 
 
     // sh "git name-rev --tags --name-only $(git rev-parse HEAD)"
