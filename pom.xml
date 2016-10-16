@@ -5,13 +5,13 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>localdomain.localhost.tutorial</groupId>
   <artifactId>java-archive</artifactId>
-  <version>2.20-SNAPSHOT</version>
+  <version>1.20.65</version>
 
   <scm>
     <connection>scm:git:git@github.com:tallisado/jenkins-pluginA.git</connection>
     <developerConnection>scm:git:git@github.com:tallisado/jenkins-pluginA.git</developerConnection>
     <url>https://github.com/tallisado/jenkins-pluginA</url>
-    <tag>multi-2.18</tag>
+    <tag>java-archive-1.20.65</tag>
   </scm>
 
   <!-- <distributionManagement>
