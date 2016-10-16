@@ -33,8 +33,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
               |    </pluginRepository>
               |  </pluginRepositories>
               |</profile>""".stripMargin()
-
-    writeFile a "~/.m2/settings.xml"
+              
     writeFile file: "~/.m2/settings.xml", text: a
 
     sh "git config --global user.email 'tvanek@klipfolio.com'"
