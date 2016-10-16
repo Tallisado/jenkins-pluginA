@@ -35,6 +35,8 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
               |</profile>""".stripMargin()
 
     writeFile a "~/.m2/settings.xml"
+    writeFile file: "~/.m2/settings.xml", text: a
+
     sh "git config --global user.email 'tvanek@klipfolio.com'"
     sh "git config --global user.name 'Tallis Vanek'"
     sh "git clean -f && git reset --hard origin/master"
