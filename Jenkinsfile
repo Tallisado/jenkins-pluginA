@@ -16,19 +16,21 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
     // git branch: 'master', credentialsId: '20686e54-62d6-423d-aedf-505f68e72094', url: 'git@github.com:tallisado/jenkins-pluginA.git'
 
     sshagent(['20686e54-62d6-423d-aedf-505f68e72094']) {
-        sh 'echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK'
-       sh 'ls -al $SSH_AUTH_SOCK || true'
+      sh 'echo SSH_AUTH_SOCK=$SSH_AUTH_SOCK'
+      sh 'ls -al $SSH_AUTH_SOCK || true'
+      sh 'git tag "l33t build'
+      sh 'git push --tags'
     }
 
-    GIT_COMMIT_REVISION = sh (
-        script: 'git rev-parse HEAD',
-        returnStdout: true
-    ).trim()
-
-    echo "Git REVISION: ${GIT_COMMIT_REVISION}"
-
-    sh 'git tag "l33t build'
-    sh 'git push --tags'
+    // GIT_COMMIT_REVISION = sh (
+    //     script: 'git rev-parse HEAD',
+    //     returnStdout: true
+    // ).trim()
+    //
+    // echo "Git REVISION: ${GIT_COMMIT_REVISION}"
+    //
+    // sh 'git tag "l33t build'
+    // sh 'git push --tags'
 
     // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
 
