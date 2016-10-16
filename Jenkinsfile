@@ -18,7 +18,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
         script: 'git rev-parse HEAD',
         returnStdout: true
     ).trim()
-    echo "Git REVISION: ${vars.GIT_COMMIT_REVISION}"
+    echo "Git REVISION: ${GIT_COMMIT_REVISION}"
     // ches: [[name: '*/master']], userRemoteConfigs: [[url: 'https://github.com/jglick/simple-maven-project-with-tests']]]
 
 
