@@ -11,6 +11,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   stage("Checkout"){
     // sh 'whoami'
     // sh 'ls ~/.ssh'
+    checkout scm
 
 
     GIT_COMMIT_REVISION = sh (
@@ -22,7 +23,6 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
 
 
     // sh 'echo $env.BRANCH_NAME'
-    checkout scm
     // sh 'git rev-parse --abbrev-ref HEAD > GIT_BRANCH;
     //     git_branch = readFile('GIT_BRANCH').trim();
     //     echo $git_branch;
