@@ -6,7 +6,7 @@ dockerNode(image: "maven:3.3.3-jdk-8") {
   }
   stage("Build"){
 
-    def a = """<profile>
+    def a = """|<profile>\
               |   <id>upstream</id>
               |   <repositories>
               |      <repository>
